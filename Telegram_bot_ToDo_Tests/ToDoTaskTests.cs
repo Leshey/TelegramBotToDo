@@ -6,7 +6,7 @@ namespace TelegramBotToDoTests
     public class ToDoTaskTests
     {
         [Fact]
-        public void Create_Test()
+        public void CreateTest()
         {
             var expectedID = 1;
             var expectedUserID = 123;
@@ -26,7 +26,7 @@ namespace TelegramBotToDoTests
         }
 
         [Fact]
-        public void Create_Test_With_Date_And_Priority()
+        public void CreateTest_With_DateAndPriority()
         {
             var expectedID = 1;
             var expectedUserID = 123;
@@ -52,7 +52,7 @@ namespace TelegramBotToDoTests
         }
 
         [Fact]
-        public void Close_Test()
+        public void CloseTest()
         {
             var ID = 1;
             var userID = 123;
@@ -68,7 +68,7 @@ namespace TelegramBotToDoTests
         }
 
         [Fact]
-        public void Update_Test()
+        public void UpdateTest()
         {
             var ID = 1;
             var userID = 123;
@@ -83,10 +83,10 @@ namespace TelegramBotToDoTests
             var statusToChange = false;
 
             toDoTask.Update(nameToChange, deadLineToChange, priorityToChange, statusToChange);
-            string? actualName = toDoTask.Name;
-            DateTime? actualDeadLine = toDoTask.DeadLine;
-            string? actualPriority = toDoTask.Priority;
-            bool? actualStatus = toDoTask.Status;
+            var actualName = toDoTask.Name;
+            var actualDeadLine = toDoTask.DeadLine;
+            var actualPriority = toDoTask.Priority;
+            var actualStatus = toDoTask.Status;
 
             Assert.Equal(nameToChange, actualName);
             Assert.Equal(deadLineToChange, actualDeadLine);
