@@ -8,16 +8,16 @@ namespace TelegramBotToDoTests
         [Fact]
         public void Create_Test()
         {
-            ToDoTask toDoTask = new ToDoTask(1, 123, "Write some code");
+            var expectedID = 1;
+            var expectedUserID = 123;
+            var name = "Write some code";
+            var expectedStatus = true;
 
-            int expectedID = 1;
-            int expectedUserID = 123;
-            bool expectedStatus = true;
-
-            int actualID = toDoTask.ID;
-            int actualUserID = toDoTask.UserID;
-            string actualName = toDoTask.Name;
-            bool actualStatus = toDoTask.Status;
+            ToDoTask toDoTask = new ToDoTask(expectedID, expectedUserID, name);
+            var actualID = toDoTask.ID;
+            var actualUserID = toDoTask.UserID;
+            var actualName = toDoTask.Name;
+            var actualStatus = toDoTask.Status;
 
             Assert.Equal(expectedID, actualID);
             Assert.Equal(expectedUserID, actualUserID);
@@ -28,25 +28,25 @@ namespace TelegramBotToDoTests
         [Fact]
         public void Create_Test_With_Date_And_Priority()
         {
-            ToDoTask toDoTask = new ToDoTask(1, 123, "Write some code", DateTime.Now, "Top");
+            var expectedID = 1;
+            var expectedUserID = 123;
+            var name = "Write some code";
+            var dateTime = DateTime.Now;
+            var priority = "Top";
+            var expectedStatus = true;
 
-            int expectedID = 1;
-            int expectedUserID = 123;
-            bool expectedStatus = true;
-
-            int actualID = toDoTask.ID;
-            int actualUserID = toDoTask.UserID;
-            string actualName = toDoTask.Name;
-            bool actualStatus = toDoTask.Status;
-
-            DateTime? actualDeadLine = toDoTask.DeadLine;
-            string actualPriority = toDoTask.Priority;
+            ToDoTask toDoTask = new ToDoTask(expectedID, expectedUserID, name, dateTime, priority);
+            var actualID = toDoTask.ID;
+            var actualUserID = toDoTask.UserID;
+            var actualName = toDoTask.Name;
+            var actualStatus = toDoTask.Status;
+            var actualDeadLine = toDoTask.DeadLine;
+            var actualPriority = toDoTask.Priority;
 
             Assert.Equal(expectedID, actualID);
             Assert.Equal(expectedUserID, actualUserID);
             Assert.NotNull(actualName);
             Assert.Equal(expectedStatus, actualStatus);
-
             Assert.NotNull(actualDeadLine);
             Assert.NotNull(actualPriority);
         }
@@ -54,10 +54,15 @@ namespace TelegramBotToDoTests
         [Fact]
         public void Close_Test()
         {
-            ToDoTask toDoTask = new ToDoTask(1, 123, "Write some code", DateTime.Now, "Top");
+            var ID = 1;
+            var userID = 123;
+            var name = "Write some code";
+            var dateTime = DateTime.Now;
+            var priority = "Top";
+            ToDoTask toDoTask = new ToDoTask(ID, userID, name, dateTime, priority);
             
             toDoTask.Close();
-            bool actualStatus = toDoTask.Status;
+            var actualStatus = toDoTask.Status;
 
             Assert.False(actualStatus);
         }
@@ -65,7 +70,13 @@ namespace TelegramBotToDoTests
         [Fact]
         public void Update_Test()
         {
-            ToDoTask toDoTask = new ToDoTask(1, 123, "Write some code", DateTime.Now, "Top");
+            var ID = 1;
+            var userID = 123;
+            var name = "Write some code";
+            var dateTime = DateTime.Now;
+            var priority = "Top";
+            ToDoTask toDoTask = new ToDoTask(ID, userID, name, dateTime, priority);
+
             var nameToChange = "Go to sleep";
             var deadLineToChange = new DateTime(2023, 1, 10, 12, 0, 0);
             var priorityToChange = "Low";
@@ -82,8 +93,5 @@ namespace TelegramBotToDoTests
             Assert.Equal(priorityToChange, actualPriority);
             Assert.Equal(statusToChange, actualStatus);
         }
-    
     }
-
-
 }
