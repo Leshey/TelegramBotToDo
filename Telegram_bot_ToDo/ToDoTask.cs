@@ -23,7 +23,6 @@ public sealed class ToDoTask
     public string? Priority { get; private set; }
     public bool Status { get; private set; }
 
-    
     public void Close()
     {
         if(Status)
